@@ -273,7 +273,7 @@ This project is **not licensed**. All rights reserved by the author.
 
 **Vishal Singh**
 - GitHub: [@vishal-singh-web](https://github.com/vishal-singh-web)
-- Portfolio: [vishal-singh-web.github.io](https://vishal-singh-web.github.io)
+- LinkedIn: [https://www.linkedin.com/in/vishalsingh-profile/](https://www.linkedin.com/in/vishalsingh-profile/)
 
 ---
 
