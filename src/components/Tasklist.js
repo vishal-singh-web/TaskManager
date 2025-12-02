@@ -28,7 +28,7 @@ function Tasklist(props) {
         }
 
         setcurr(filtered);
-        setCurrentPage(1);
+        
         getData();
     }, [tasks, priority, status, searchTerm]);
     const totalPages = Math.ceil(currtask.length / pageSize);
