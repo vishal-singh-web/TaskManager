@@ -26,11 +26,12 @@ function Tasklist(props) {
                 t.title.toLowerCase().includes(q)
             );
         }
-
         setcurr(filtered);
-        
         getData();
     }, [tasks, priority, status, searchTerm]);
+    useEffect(() => {
+    setCurrentPage(1);
+}, [priority, status, searchTerm]);
     const totalPages = Math.ceil(currtask.length / pageSize);
 
     const indexOfLast = currentPage * pageSize;
