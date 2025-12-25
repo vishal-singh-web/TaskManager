@@ -27,7 +27,6 @@ function Tasklist(props) {
             );
         }
         setcurr(filtered);
-        currentTasks = currtask.slice(indexOfFirst, indexOfLast);
     }, [tasks, priority, status, searchTerm]);
     useEffect(() => {
         setCurrentPage(1);

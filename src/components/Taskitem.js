@@ -4,7 +4,6 @@ import { TaskContext } from '../Context/Taskstate';
 
 function Taskitem(props) {
     const { _id, title, description, status, priority } = props.task;
-
     const alert = (message, condition) => {
         props.setMsg(message);
         props.setType(condition);
@@ -26,7 +25,6 @@ function Taskitem(props) {
                     authtoken: localStorage.getItem("token"),
                 },
             });
-
             if (!res.ok) {
                 console.log("delete failed, status:", res.status);
                 alert("Task deletion failed, Please try again.", "danger");

@@ -5,7 +5,7 @@ const Addtask = (props) => {
   const host = "https://taskmanager-backend-bnau.onrender.com/api/tasks"
   const [details, setdetails] = useState({ title: '', description: '', priority: 'Medium', status: 'In-Progress' });
   const taskContext = useContext(TaskContext);
-  const { tasks, setTasks,getData } = taskContext;
+  const { tasks, setTasks } = taskContext;
   
 
   const alert = (message, condition) => {
@@ -13,14 +13,12 @@ const Addtask = (props) => {
     props.setType(condition); 
     props.setShowAlert(true); 
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = `${host}/addtask`
-    try {
-      setTasks([...tasks, details]);
+    try { 
       alert('Task added Sucessfully.',"success");
-      const res = fetch(url, {
+      const res = await fetch(url, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -28,6 +26,8 @@ const Addtask = (props) => {
         },
         body: JSON.stringify({ title: details.title, description: details.description, priority: details.priority, status: details.status })
       })
+      let data = await res.json();
+      setTasks([...tasks, data]);
       setdetails({ title: '', description: '', priority: 'Medium', status: 'In-Progress' });
     }
     catch (err) {
