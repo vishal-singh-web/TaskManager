@@ -18,7 +18,7 @@ const Addtask = (props) => {
     e.preventDefault();
     const url = `${host}/addtask`
     try {
-      setTasks([details, ...tasks]);
+      setTasks([...tasks, details]);
       alert('Task added Sucessfully.',"success");
       const res = fetch(url, {
         method: "POST",
