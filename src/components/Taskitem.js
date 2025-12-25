@@ -16,6 +16,8 @@ function Taskitem(props) {
     const host = 'https://taskmanager-backend-bnau.onrender.com/api/tasks'
     const handledelete = async () => {
         try {
+            setTasks(tasks.filter((ele) => ele._id !== _id));
+            alert("Task deleted Successfully.", "success");
             const url = `${host}/deletetask/${_id}`;
             const res = await fetch(url, {
                 method: "DELETE",
@@ -30,8 +32,6 @@ function Taskitem(props) {
                 alert("Task deletion failed, Please try again.", "danger");
                 return;
             }
-            setTasks(tasks.filter((ele) => ele._id !== _id));
-            alert("Task deleted Successfully.", "success");
 
         } catch (err) {
             console.error("delete error:", err);
@@ -45,6 +45,8 @@ function Taskitem(props) {
         ref.current.click();
     }
     const savetask = async () => {
+        alert("Task edited Successfully.", "success");
+            refClose.current.click();
         try {
             const url = `${host}/updatetask/${_id}`;
             const res = await fetch(url, {
@@ -66,8 +68,6 @@ function Taskitem(props) {
             setTasks(
                 tasks.map((t) => (t._id === _id ? updated : t))
             );
-            alert("Task edited Successfully.", "success");
-            refClose.current.click();
         } catch (err) {
             console.error("update error:", err);
             alert("Task edit failed, please try again.", "danger");

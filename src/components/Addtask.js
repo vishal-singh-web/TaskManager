@@ -18,6 +18,8 @@ const Addtask = (props) => {
     e.preventDefault();
     const url = `${host}/addtask`
     try {
+      setTasks([details, ...tasks]);
+      alert('Task added Sucessfully.',"success");
       const res = fetch(url, {
         method: "POST",
         headers: {
@@ -26,9 +28,7 @@ const Addtask = (props) => {
         },
         body: JSON.stringify({ title: details.title, description: details.description, priority: details.priority, status: details.status })
       })
-      setTasks([...tasks, details]);
       setdetails({ title: '', description: '', priority: 'Medium', status: 'In-Progress' });
-      alert('Task added Sucessfully.',"success");
       getData();
     }
     catch (err) {

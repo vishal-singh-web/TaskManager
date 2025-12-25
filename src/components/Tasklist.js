@@ -4,7 +4,7 @@ import Taskitem from './Taskitem';
 
 function Tasklist(props) {
     const taskContext = useContext(TaskContext);
-    const { tasks, searchTerm,getData } = taskContext;
+    const { tasks, searchTerm } = taskContext;
     const [currtask, setcurr] = useState([...tasks]);
     const [priority, setpriority] = useState("Any");
     const [status, setstatus] = useState("Any");
@@ -27,16 +27,16 @@ function Tasklist(props) {
             );
         }
         setcurr(filtered);
-        getData();
+        currentTasks = currtask.slice(indexOfFirst, indexOfLast);
     }, [tasks, priority, status, searchTerm]);
     useEffect(() => {
-    setCurrentPage(1);
-}, [priority, status, searchTerm]);
+        setCurrentPage(1);
+    }, [priority, status, searchTerm]);
+    
     const totalPages = Math.ceil(currtask.length / pageSize);
-
     const indexOfLast = currentPage * pageSize;
     const indexOfFirst = indexOfLast - pageSize;
-    const currentTasks = currtask.slice(indexOfFirst, indexOfLast);
+    let currentTasks =  currtask.slice(indexOfFirst, indexOfLast);;
 
     const goNext = () => {
         setCurrentPage(p => Math.min(p + 1, totalPages));
@@ -98,7 +98,7 @@ function Tasklist(props) {
 
                     {currentTasks.map((a) => (
                         <div className="col-md-12" key={a._id} >
-                            <Taskitem task={a} setMsg={props.setMsg} setShowAlert={props.setShowAlert} setType={props.setType}/>
+                            <Taskitem task={a} setMsg={props.setMsg} setShowAlert={props.setShowAlert} setType={props.setType} />
                         </div>
                     ))}
                 </div>

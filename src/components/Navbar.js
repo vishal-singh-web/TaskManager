@@ -7,7 +7,7 @@ function Navbar() {
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
     };
-    const {getData,setTasks } = useContext(TaskContext);
+    const {setTasks } = useContext(TaskContext);
     let navigate = useNavigate();
     const handlelogout = () => {
         localStorage.removeItem('token');
