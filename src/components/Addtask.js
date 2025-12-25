@@ -29,7 +29,6 @@ const Addtask = (props) => {
         body: JSON.stringify({ title: details.title, description: details.description, priority: details.priority, status: details.status })
       })
       setdetails({ title: '', description: '', priority: 'Medium', status: 'In-Progress' });
-      getData();
     }
     catch (err) {
       console.log(err.message)
